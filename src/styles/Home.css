@@ -1,0 +1,39 @@
+.Container{
+    margin: auto;
+}
+.Container .Row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.Container .Col{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    /* DELETE LATER, JUST FOR TESTING */
+    min-height: 89vh;
+    background-color: #d7bea8;
+    /* border: solid magenta; */
+
+
+}
+
+.Container .main {
+    border: solid thin black;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+}
+
+.Container .main .question{
+    color: #6b0000;
+    font-size: 25pt;
+    
+}

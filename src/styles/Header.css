@@ -1,0 +1,11 @@
+.heading{
+    border-bottom: solid thin black;
+    background-color: #987456;
+    padding: 0.3%;
+    padding-left: 2%;
+}
+.navbar{
+    color: #480607;
+    /* text-shadow: 2px 2px #000000; */
+    background-color: #987456;
+}
