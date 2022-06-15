@@ -1,13 +1,26 @@
 .Container{
     margin: auto;
+    background-color: #d7bea8;
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
 }
-.Container .Row{
+
+/* .Content{
+
+} */
+
+.Content .Row{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 }
-.Container .Col{
+.Content .Col{
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
@@ -17,14 +30,14 @@
     flex: 1;
 
     /* DELETE LATER, JUST FOR TESTING */
-    min-height: 89vh;
-    background-color: #d7bea8;
+    
+    
     /* border: solid magenta; */
 
 
 }
 
-.Container .main {
+.Content .main {
     border: solid thin black;
     justify-content: center;
     align-items: center;
@@ -32,7 +45,7 @@
     padding: 2%;
 }
 
-.Container .main .question{
+.Content .main .question{
     color: #6b0000;
     font-size: 25pt;
     
