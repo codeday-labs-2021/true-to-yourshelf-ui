@@ -1,18 +1,27 @@
 import '../styles/Home.css'
 import React from 'react';
 
+var currentEmotion = '';
+var desiredEmotion = '';
+
 class Questions extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             submit: false,
-            finalSumbit: false,
+            feeling: '',
+            desiredFeeling: '',
         };
     }
 
-    onClick = event => {
+    onFSubmit = event => {
         this.setState({submit: !this.state.submit})//sets it to opposite of previous value
-     }
+        this.setState({feeling: currentEmotion})
+    }
+
+    onLSubmit = event => {
+        this.setState({desiredFeeling: desiredEmotion})
+    }
 
     render() {
         return(
@@ -20,13 +29,13 @@ class Questions extends React.Component {
                 <>
                     <h3 className='question'>HOW DO YOU WANT TO FEEL?</h3>
                     <p>This is where the user input will go!</p>
-                    <p>SUBMIT</p>
+                    <button onClick={this.onLSumbit.bind(this)}>SUBMIT</button>
                 </>
             :
                 <>
                     <h3 className='question'>HOW ARE YOU FEELING?</h3>
                     <p>This is where the user input will go!</p>
-                    <button onClick={this.onClick.bind(this)}>SUBMIT</button>
+                    <button onClick={this.onFSumbit.bind(this)}>SUBMIT</button>
                 </>
         )
     }
