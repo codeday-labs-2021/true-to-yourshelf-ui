@@ -1,3 +1,4 @@
+import { queryAllByTestId } from "@testing-library/react";
 import axios from "axios";
 
 export default{
@@ -6,7 +7,7 @@ export default{
         const {query, pageSize, apiKey} = apiRequest;
         let path = `emotion-request?query=${query}&pageSize=${pageSize}&apiKey=${apiKey}`;
         return axios.get(`${trueToYourShelfApi}${path}`)
-        .then((err) =>{
+        .then((response) =>{
             return response && response.data;
         })
         .catch((err)=>{
