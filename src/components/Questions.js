@@ -1,5 +1,7 @@
 import '../styles/Home.css'
 import React from 'react';
+import { connect } from 'react-redux';
+import { setQuery } from '../actions/results.js';
 
 let currentEmotion = '';
 let desiredEmotion = '';
@@ -13,6 +15,25 @@ class Questions extends React.Component {
             desiredFeeling: '',
         };
     }
+
+    // useEffect(()=> {
+    //     TrueToYourShelfApi
+    //         .getBooks("IMAGINATIVE", "50", "c44b31886102636bcb386abc55a62211")
+    //         .then(response => {
+                
+    //             const books = response.map(book => {
+    //                 return {
+    //                     title: book["sourceResource.title"],
+    //                     author: book["sourceResource.creator"],
+    //                     description: book["sourceResource.description"],
+    //                     object: book.object,
+    //                 }
+    //             })
+
+    //             setCardInfo(books);
+    //     })
+    //     .catch(error => console.log(error));
+    // });
 
     onFSubmit = event => {
         if (document.getElementById("current").value === ''){
@@ -34,6 +55,7 @@ class Questions extends React.Component {
         else{
             desiredEmotion =  document.getElementById("desired").value
             this.setState({desiredFeeling: desiredEmotion})
+            console.log(this.state.desiredFeeling)
         }
     }
 
@@ -55,4 +77,5 @@ class Questions extends React.Component {
     }
 }
 
-export default Questions;
+
+export default connect(this.state.desiredFeeling, {setQuery})(Questions);

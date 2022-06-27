@@ -2,7 +2,7 @@ import '../styles/Results.css';
 import ReactDOM from 'react-dom';
 import Header from '../components/Header';
 import Cards from '../components/Cards';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,6 +14,35 @@ var emotion = "EMOTION"
 
 
 class Results extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            cardInfo: []
+        };
+    }
+
+    // const [cardInfo, setCardInfo] = useState([]);
+    
+
+    // useEffect(()=> {
+    //     TrueToYourShelfApi
+    //         .getBooks("IMAGINATIVE", "50", "c44b31886102636bcb386abc55a62211")
+    //         .then(response => {
+                
+    //             const books = response.map(book => {
+    //                 return {
+    //                     title: book["sourceResource.title"],
+    //                     author: book["sourceResource.creator"],
+    //                     description: book["sourceResource.description"],
+    //                     object: book.object,
+    //                 }
+    //             })
+
+    //             setCardInfo(books);
+    //     })
+    //     .catch(error => console.log(error));
+    // });
+
     render(){
         return (
             <div className='Container'>
@@ -27,10 +56,18 @@ class Results extends React.Component {
                 </Modal.Dialog>
                 </div>          
                 <h1 className='title'>Here are some book recommendations for {emotion}</h1>
-                <Cards/>
+                <Cards(this.state.cards)/>
             </div>
         );
     }
 }
 root.render(<Results/>);
-export default Results;
+
+const mapStateToProps = (state) => {
+    return {
+        cards: state.cardInfo,
+        query: getQuery,
+    };
+};
+
+export default connect(mapStateToProps)(Results);
