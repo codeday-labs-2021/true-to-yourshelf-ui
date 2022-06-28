@@ -46,8 +46,6 @@ class Results extends React.Component {
     onLSubmit = event => {
         let desiredEmotion =  document.getElementById("emotionDropdown").value;
         this.setState({desiredFeeling: desiredEmotion});
-        
-        // console.log(desiredEmotion);
         this.handleGetBooks(desiredEmotion);
     }
 
@@ -77,8 +75,6 @@ class Results extends React.Component {
     handleGetBooks(desiredFeeling){
         const apiRequest = {"query": `${desiredFeeling}`, "pageSize": "50", "apiKey": "c44b31886102636bcb386abc55a62211"};
         return(
-            // console.log("desiredFeeling" + this.state.desiredFeeling)
-            
             TrueToYourShelfApi
                 .getBooks(apiRequest)
                 .then(response => {
@@ -89,7 +85,6 @@ class Results extends React.Component {
     };
 
     renderCards(){
-        // console.log(this.state.books);
         return (
             <div className='Container'>
                 <Header/>
