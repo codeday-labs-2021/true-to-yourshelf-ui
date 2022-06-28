@@ -5,9 +5,7 @@ export default{
 
     getBooks: async (apiRequest) => {
         const {query, pageSize, apiKey} = apiRequest;
-        // let path = `emotion-request?query=${query}&pageSize=${pageSize}&apiKey=${apiKey}`;
-        let path = `emotion-request?query=IMAGINATIVE&pageSize=20&apiKey=c44b31886102636bcb386abc55a62211`;
-        // return axios.get(`${trueToYourShelfApi}${path}`)
+        let path = `emotion-request?query=${query}&pageSize=${pageSize}&apiKey=${apiKey}`;
         return axios.get(`http://localhost:8080/${path}`)
         .then((response) =>{
             return response && response.data;
@@ -16,7 +14,18 @@ export default{
             console.log(err);
             return Promise.reject(err)
         });
+    },
 
+    getEmotions: async () => {
+        let path = "http://localhost:8080/emotions";
+        return axios.get(path)
+            .then((response) =>{
+                return response && response.data;
+            })
+            .catch((err)=>{
+                console.log(err);
+                return Promise.reject(err);
+            });
     }
 
 }
