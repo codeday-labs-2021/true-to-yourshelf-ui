@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {Card} from 'react-bootstrap';
 import TrueToYourShelfApi from '../api/TrueToYourShelfApi';
 import { createSearchParams } from 'react-router-dom';
+import { findByTitle } from '@testing-library/react';
 // import { render } from 'react-dom';
 
 class Cards extends React.Component {
@@ -18,57 +19,77 @@ class Cards extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            books: [],
-        }
+        this.renderCards = this.renderCards.bind(this);
+        this.renderCardInfo = this.renderCardInfo.bind(this);
     }
 
-    organizeBooks(){
-        let {cardInfo} = this.props;
-        const newBooks = cardInfo.map(book => {
-            return {
-                title: book["sourceResource.title"],
-                author: book["sourceResource.creator"],
-                description: book["sourceResource.description"],
-                object: book.object,
-            }
-        })
+    // mapBooksToCard(book){
+        
+    //     return(
+    //             title.setBookTitle(book["sourceResource.title"]),
+    //             // author: book["sourceResource.creator"],
+    //             // description: book["sourceResource.description"],
+    //             // object: book.object,
+    //     )
 
-        const newState = Object.assign({}, this.state, {
-            books: newBooks
-        });
+    //     const newState = Object.assign({}, this.state, {
+    //         books: newBooks
+    //     });
 
-        this.setState(newState);
-    }
+    //     this.setState(newState);
+    //     <Card style={{ width: "18rem" }} className="box">  
+    //             <Card.Img variant="top" src={image}/>
+    //             <Card.Body>
+    //                 <Card.Title>{this.state.books.get("title")}</Card.Title>
+    //                 <Card.Text>{this.state.books.get("author")}</Card.Text>
+    //                 <Card.Text>{this.state.books.get("description")}</Card.Text>
+    //             </Card.Body>
+    //             </Card>
+    // }
 
     renderCards(){
-        console.log("book 0 " + this.state.books[0]);
-        let image = "";
-        let defaultImage = "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg";
-        this.state.books.forEach(element => {
-            if(!element.has("object")){
-                image = defaultImage;
-            }
-            else{
-                image = this.state.books.get("object")
-            }
-            return(
-                <Card style={{ width: "18rem" }} className="box">  
-                <Card.Img variant="top" src={image}/>
-                <Card.Body>
-                    <Card.Title>{this.state.books.get("title")}</Card.Title>
-                    <Card.Text>{this.state.books.get("author")}</Card.Text>
-                    <Card.Text>{this.state.books.get("description")}</Card.Text>
-                </Card.Body>
-                </Card>
-            );
-        });
-    };
-
-    render(){
+        const {cardInfo} = this.props;
+        
         return(
             <div>
-                {this.renderCards()}
+                {cardInfo.map(element => {console.log(element); this.renderCardInfo(element)})}
+            </div>
+        );
+    };
+
+    renderCardInfo(element) {
+        let image = "";
+        let defaultImage = "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg";
+        let title = element["sourceResource.title"];
+        let author = element["sourceResource.creator"];
+        let description = element["sourceResource.description"];
+        let object = element.object;
+        image = object ? object : defaultImage;
+        return(
+            <div> 
+                <p>{element}</p>
+            {/* <Card style={{ width: "18rem" }} className="box">  
+                <Card.Img variant="top" src={image}/>
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text>{author}</Card.Text>
+                    <Card.Text>{description}</Card.Text>
+                </Card.Body> 
+                <Card.Body> Hello World </Card.Body>
+            </Card> */}
+            </div>
+        );
+    }
+
+    render(){
+        const {cardInfo} = this.props;
+        return(
+            <div>
+                <p>AAAfjbbzlkdjngbn.kfghokdajslhfldkjbhflkadbklfhaldksfnlkabhidfgblkadsjblkjdahf;ojf;jkadhf</p>
+                <div>
+                    {cardInfo.map(element => {console.log(element); this.renderCardInfo(element)})}
+                </div>
+                {/* {this.renderCards()} */}
             </div>
         )
     };
