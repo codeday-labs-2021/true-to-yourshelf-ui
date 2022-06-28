@@ -5,8 +5,10 @@ import Cards from '../components/Cards';
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import getEmotions from "../api/TrueToYourShelfApi";
 
 import { render } from '@testing-library/react';
+import TrueToYourShelfApi from "../api/TrueToYourShelfApi";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,6 +16,21 @@ var emotion = "EMOTION"
 
 
 class Results extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            emotions: []
+        }
+    }
+    componentDidMount() {
+        TrueToYourShelfApi.getEmotions()
+            .then(response => {
+                this.setState({emotions: response})
+            })
+            .catch(error => console.log(error));
+    }
+
     render(){
         return (
             <div className='Container'>
@@ -27,6 +44,15 @@ class Results extends React.Component {
                 </Modal.Dialog>
                 </div>          
                 <h1 className='title'>Here are some book recommendations for {emotion}</h1>
+
+                <select>
+                    {this.state.emotions.map(emotion =>(
+                        <option key={emotion} value={emotion}>
+                            {emotion}
+                        </option>
+                        ))}
+                </select>
+
                 <Cards/>
             </div>
         );
