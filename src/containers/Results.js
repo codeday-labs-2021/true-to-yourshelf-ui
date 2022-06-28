@@ -52,7 +52,7 @@ class Results extends React.Component {
         let desiredEmotion =  document.getElementById("emotionDropdown").value;
         this.setState({desiredFeeling: desiredEmotion});
         
-        console.log(desiredEmotion);
+        // console.log(desiredEmotion);
         this.handleGetBooks(desiredEmotion);
     }
 
@@ -94,7 +94,7 @@ class Results extends React.Component {
     };
 
     renderCards(){
-        console.log(this.state.books);
+        // console.log(this.state.books);
         return (
             <div className='Container'>
                 <Header/>
