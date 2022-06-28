@@ -1,16 +1,11 @@
 import '../styles/Results.css';
-import ReactDOM from 'react-dom';
 import Header from '../components/Header';
 import Cards from '../components/Cards';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import TrueToYourShelfApi from '../api/TrueToYourShelfApi';
 import '../styles/Home.css';
-
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-var emotion = "EMOTION"
 
 
 class Results extends React.Component {

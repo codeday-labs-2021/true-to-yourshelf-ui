@@ -1,10 +1,7 @@
 import '../styles/Results.css'
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Card} from 'react-bootstrap';
-import TrueToYourShelfApi from '../api/TrueToYourShelfApi';
-import { createSearchParams } from 'react-router-dom';
-import { findByTitle } from '@testing-library/react';
-// import { render } from 'react-dom';
+
 
 const Cards = ({cardInfo}) => {
 
