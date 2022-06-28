@@ -19,6 +19,8 @@ class Cards extends React.Component {
 
     constructor(props){
         super(props);
+        this.renderCards = this.renderCards.bind(this);
+        this.renderCardInfo = this.renderCardInfo.bind(this);
     }
 
     // mapBooksToCard(book){
@@ -47,39 +49,47 @@ class Cards extends React.Component {
 
     renderCards(){
         const {cardInfo} = this.props;
-        console.log("book " + cardInfo);
+        
+        return(
+            <div>
+                {cardInfo.map(element => {console.log(element); this.renderCardInfo(element)})}
+            </div>
+        );
+    };
+
+    renderCardInfo(element) {
         let image = "";
         let defaultImage = "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg";
-        cardInfo.map(element => {
-            console.log(element);
-            let title = element["sourceResource.title"];
-            let author = element["sourceResource.creator"];
-            let description = element["sourceResource.description"];
-            let object = element.object;
-            console.log(description);
-            // if(!element.has("object")){
-            //     image = defaultImage;
-            // }
-            // else{
-            //     image = cardInfo.get("object")
-            // }
-            return(
-                <Card style={{ width: "18rem" }} className="box">  
+        let title = element["sourceResource.title"];
+        let author = element["sourceResource.creator"];
+        let description = element["sourceResource.description"];
+        let object = element.object;
+        image = object ? object : defaultImage;
+        return(
+            <div> 
+                <p>{element}</p>
+            {/* <Card style={{ width: "18rem" }} className="box">  
                 <Card.Img variant="top" src={image}/>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>{author}</Card.Text>
                     <Card.Text>{description}</Card.Text>
-                </Card.Body>
-                </Card>
-            );
-        });
-    };
+                </Card.Body> 
+                <Card.Body> Hello World </Card.Body>
+            </Card> */}
+            </div>
+        );
+    }
 
     render(){
+        const {cardInfo} = this.props;
         return(
             <div>
-                {this.renderCards()}
+                <p>AAAfjbbzlkdjngbn.kfghokdajslhfldkjbhflkadbklfhaldksfnlkabhidfgblkadsjblkjdahf;ojf;jkadhf</p>
+                <div>
+                    {cardInfo.map(element => {console.log(element); this.renderCardInfo(element)})}
+                </div>
+                {/* {this.renderCards()} */}
             </div>
         )
     };
