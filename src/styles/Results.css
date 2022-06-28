@@ -1,0 +1,31 @@
+.box{
+    margin: 60px;
+}
+
+.grid{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.grid > div{
+    flex-basis: calc(20% - 40px);
+    background-color: Pink;
+}
+
+.title{
+    padding-top: 3%;
+    color: #6b0000;
+    text-align: center;
+}
+.static-modal{
+    float: left;
+    padding: 1.8%;
+}
+.testing{
+    color: #6b0000;
+    /* border: solid thin black; */
+    /* background-color: white; */
+}
